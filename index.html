@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Input Data Kendaraan </title>
+</head>
+<body>
+
+	<h2>CRUD DATA KENDARAAN</h2>
+	<a href="tambah.php">+ TAMBAH INPUT</a>
+	<br/>
+	<br/>
+	<table border="1"width="800">
+		<tr>
+
+<td><center>Id</center></td>
+<td><center>No_polisi</center></td>
+<td><center>Nama_kendaraan</center></td>
+<td><center>Tipe</center></td>
+<td><center>Warna</center></td>
+<td><center>No_rangka</center></td>
+<td><center>No_mesin</center></td>
+<td><center>Bahan_bakar</center></td>
+<td><center>Thn_kendaraan</center></td>
+<td><center>Foto</center></td>
+<td><center>Status</center></td>
+		</tr>
+		<?php 
+		include('koneksi.php');
+		$query=mysqli_query($koneksi,"SELECT *FROM kendaraan");
+        while($data=mysqli_fetch_array($query)){
+			?>
+			<tr>
+				<td><?php echo $no++; ?></td>
+				<td><?php echo $data['Id'];?></td>
+	<td><?php echo $data['No_polisi'];?></td>
+	<td><?php echo $data['Nama_kendaraan'];?></td>
+	<td><?php echo $data['Tipe'];?></td>
+	<td><?php echo $data['Warna'];?></td>
+	<td><?php echo $data['No_rangka'];?></td>
+	<td><?php echo $data['No_mesin'];?></td>
+	<td><?php echo $data['Bahan_bakar'];?></td>
+	<td><?php echo $data['Thn_kendaraan'];?></td>
+	<td><?php echo $data['Foto'];?></td>
+	<td><?php echo $data['Status'];?></td>
+				<td>
+					<a href="edit.php?id=<?php echo $d['id']; ?>">EDIT</a>
+					<a href="hapus.php?id=<?php echo $d['id']; ?>">HAPUS</a>
+				</td>
+			</tr>
+			<?php 
+		}
+		?>
+	</table>
+</body>
+</html>
